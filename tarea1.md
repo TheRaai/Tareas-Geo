@@ -1,12 +1,7 @@
-Tarea 1 Geo
+Tarea 1 Ciencia de datos espaciales
 ================
 
-``` r
-#install.packages("rnaturalearth")
-library(rnaturalearth)
-```
-
-## GitHub Documents
+## Integrantes: Raimundo Moraga
 
 This is an R Markdown format used for publishing markdown documents to
 GitHub. When you click the **Knit** button all R code chunks are run and
@@ -17,14 +12,28 @@ a markdown file (.md) suitable for publishing to GitHub is generated.
 You can include R code in the document as follows:
 
 ``` r
-#summary(rnaturalearth)
+#install.packages("rnaturalearthhires")
+oceanos <- ne_download(scale=110,type='ocean',category='physical')
+sp::plot(ne_countries(country='united states of america',scale = 'small'))
 ```
 
-## Including Plots
+    ## Warning in wkt(obj): CRS object has no comment
 
-You can also embed plots, for example:
+![](tarea1_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
-![](tarea1_files/figure-gfm/pressure-1.png)<!-- -->
+``` r
+sp::plot(oceanos)
+```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to
-prevent printing of the R code that generated the plot.
+![](tarea1_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->
+
+``` r
+vignette('rnaturalearth', package='rnaturalearth')
+```
+
+    ## starting httpd help server ... done
+
+``` r
+poli <- oceanos@polygons[2]
+poli[[1]]@Polygons[[3]]@area
+```
